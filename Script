@@ -1,0 +1,44 @@
+#Criado por AdamWeishaupt
+#Twitter: @AdamWeishaup7
+#Python 3.7+
+#Bibliotecas necessárias - flask, flask-restful, flask-jsonpify, freeze
+
+from flask import Flask, request
+from flask_restful import Resource, Api
+
+app = Flask(__name__)
+api = Api(app)
+
+class Usuario(Resource):
+    def get(self):
+        mensagem = "Ola usuario!!!"
+        return mensagem
+
+class Usuario_id(Resource):
+    def get(self, usuario_id):
+        if usuario_id == "10":
+            mensagem = "Usuario 10"
+        elif usuario_id == "12":
+            mensagem = "Usuario 12"   
+        else:
+            mensagem = "Qualquer usuario!"  
+        return mensagem
+
+class Admin(Resource):
+    def get(self):
+        mensagem = "Ola Admin!!!"
+        return mensagem
+
+api.add_resource(Usuario, "/usuario")
+api.add_resource(Admin, "/admin")
+api.add_resource(Usuario_id, "/usuario/<usuario_id>")
+
+if __name__ == "__main__":
+    app.run(port="5010")
+
+#URLS para exibição
+#127.0.0.1/usuario
+#127.0.0.1/usuario/10
+#127.0.0.1/usuario/12
+#127.0.0.1/usuario/qualquercoisa
+#127.0.0.1/admin
