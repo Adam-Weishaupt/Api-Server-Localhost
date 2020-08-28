@@ -1,3 +1,4 @@
 # Api-Server-Localhost
 
-Teste
+Script simples criado em python
+Cria um servidor localhost com chamada de API.
